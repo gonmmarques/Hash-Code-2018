@@ -14,8 +14,12 @@ class Ride():
     def calculateDistance(self):
         return calculateGenericDistance(self.a,self.b,self.x,self.y)
 
+    def calculateWaitingTime(self, preDistance):
+        return self.s - preDistance
+
     def calculateTime(self, car):
-        return car.
+        pd = car.calculatePreDistance(self)
+        return pd + self.calculateWaitingTime(pd) + self.calculateDistance()
 
 
 
