@@ -76,7 +76,6 @@ def main():
 
     # print out result
     result = ""
-    print(cars)
     for car in cars:
         result += str(len(car.rideList)) + " " + " ".join([str(ride.ride_id) for ride in car.rideList]) + "\n"
     print(result[:-1])
