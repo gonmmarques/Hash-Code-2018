@@ -36,6 +36,24 @@ def parser():
     return (rides, cars)
 
 
+def cost(ride, car):
+
+    cost = 0
+
+    # distance
+    predistance = car.calculatePreDistance(ride)
+    waitingTime = ride.calculateWaitingTime(predistance)
+    preTime = predistance + waitingTime
+    cost += preTime
+
+    # proximity to arrival time
+    cost += car.isAvailableStart(ride)
+
+    # proximity to finish time
+    cost += car.arrivesBeforeFinish(ride)
+
+    return cost
+
 def main():
 
     rides, cars = parser()
@@ -43,6 +61,10 @@ def main():
     rides = sorted(rides)
 
     for ride in rides:
-
+        
+        max_car = (None, 0)
+        
         for car in cars:
+
+            cost = cost(ride, car)
 
