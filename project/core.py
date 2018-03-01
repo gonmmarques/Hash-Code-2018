@@ -26,7 +26,7 @@ def parser():
 
     #print('R =', R, 'C =', C, 'F =', F, 'N =', N, 'B =', B, 'T =', T)
 
-    cars = [Car(0, 0)] * F
+    cars = [Car(0, 0) for _ in range(F)]
     rides = []
 
     for i in range(N):
@@ -54,6 +54,7 @@ def cost(ride, car):
 
     return cost
 
+
 def main():
 
     rides, cars = parser()
@@ -61,10 +62,21 @@ def main():
     rides = sorted(rides)
 
     for ride in rides:
-        
-        max_car = (None, 0)
-        
+
+        max_car = (None, 9999999)
+
         for car in cars:
 
-            cost = cost(ride, car)
+            car_cost = cost(ride, car)
+            if car_cost < max_car[1]:
+                max_car = (car, car_cost)
 
+        # assign ride to car
+        max_car[0].addRide(ride)
+
+    # print out result
+    result = ""
+    print(cars)
+    for car in cars:
+        result += str(len(car.rideList)) + " " + " ".join([str(ride.ride_id) for ride in car.rideList]) + "\n"
+    print(result[:-1])

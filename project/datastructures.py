@@ -62,7 +62,7 @@ class Car():
         return calculateGenericDistance(self.x, self.y, ride.a, ride.b)
 
     def isAvailableStart(self, ride):
-        return self.steps - (ride.s - ride.calculateWaitingTime() + self.calculatePreDistance(ride))
+        return self.steps - (ride.s - ride.calculateWaitingTime(self.calculatePreDistance(ride)) + self.calculatePreDistance(ride))
 
     def arrivesBeforeFinish(self, ride):
         return self.steps + ride.calculateTime(self) - ride.f
