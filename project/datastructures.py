@@ -16,7 +16,9 @@ class Ride():
         return calculateGenericDistance(self.a,self.b,self.x,self.y)
 
     def calculateWaitingTime(self, preDistance):
-        return self.s - preDistance
+        difference = self.s - preDistance
+        if difference > 0: return difference
+        else: return 0
 
     def calculateTime(self, car):
         pd = car.calculatePreDistance(self)
