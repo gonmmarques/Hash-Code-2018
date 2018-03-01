@@ -16,7 +16,9 @@ class Ride():
         return calculateGenericDistance(self.a,self.b,self.x,self.y)
 
     def calculateWaitingTime(self, preDistance):
-        return self.s - preDistance
+        difference = self.s - preDistance
+        if difference > 0: return difference
+        else: return 0
 
     def calculateTime(self, car):
         pd = car.calculatePreDistance(self)
@@ -62,7 +64,7 @@ class Car():
         return calculateGenericDistance(self.x, self.y, ride.a, ride.b)
 
     def isAvailableStart(self, ride):
-        return self.steps - (ride.s - ride.calculateWaitingTime(self.calculatePreDistance(ride)) + self.calculatePreDistance(ride))
+        return self.steps - (ride.s - ride.calculateWaitingTime(self.calculatePreDistance(ride)) - self.calculatePreDistance(ride))
 
     def arrivesBeforeFinish(self, ride):
         return self.steps + ride.calculateTime(self) - ride.f
