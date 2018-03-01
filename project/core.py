@@ -38,7 +38,7 @@ def parser():
 
 def cost(ride, car):
 
-    print("Cost with ride", str(ride.ride_id))
+    # print("Cost with ride", str(ride.ride_id))
 
     cost = 0
 
@@ -48,18 +48,18 @@ def cost(ride, car):
     preTime = predistance + waitingTime
     cost += preTime
 
-    print("preTime", str(preTime))
+    # print("preTime", str(preTime))
 
     # proximity to arrival time
     cost += car.isAvailableStart(ride)
 
-    print("isavailablestart", str(car.isAvailableStart(ride)))
+    # print("isavailablestart", str(car.isAvailableStart(ride)))
 
     # proximity to finish time
     cost += car.arrivesBeforeFinish(ride)
-    print("arrivesbeforefinish", str(car.arrivesBeforeFinish(ride)))
+    # print("arrivesbeforefinish", str(car.arrivesBeforeFinish(ride)))
 
-    print("total", str(cost))
+    # print("total", str(cost))
 
     return cost
 
@@ -76,7 +76,7 @@ def main():
 
         for i, car in enumerate(cars):
 
-            print("Costs with car", i, "; ridelist: ", [str(ride.ride_id) for ride in car.rideList])
+            # print("Costs with car", i, "; ridelist: ", [str(ride.ride_id) for ride in car.rideList])
 
             car_cost = cost(ride, car)
             if car_cost < max_car[1]:

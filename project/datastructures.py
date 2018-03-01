@@ -57,6 +57,8 @@ class Car():
         self.rideList = []
 
     def addRide(self, ride):
+        self.x = ride.x
+        self.y = ride.y
         self.steps += ride.calculateTime(self)
         self.rideList.append(ride)
 
