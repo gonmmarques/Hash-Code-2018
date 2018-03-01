@@ -258,4 +258,4 @@ venv.bak/
 
 # End of https://www.gitignore.io/api/pydev,macos,python,eclipse,pycharm
 
-.idea/
+.idea/**
