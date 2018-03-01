@@ -16,26 +16,14 @@
 
 # note that f can be equal to T – this makes the latest finish equal to the end of the simulation
 
+import project
 
-class Ride():
-    """docstring for Ride"""
-
-    def __init__(self, a, b, x, y, s, f):
-        super(Ride, self).__init__()
-        self.a = a
-        self.b = b
-        self.x = x
-        self.y = y
-        self.s = s
-        self.f = f
-
-
-R, C, F, N, B, T = input().split()
+R, C, F, N, B, T = [int(i) for i in input().split()]
 
 print('R =', R, 'C =', C, 'F =', F, 'N =', N, 'B =', B, 'T =', T)
 
 rides = []
 
 for i in range(N):
-    a, b, x, y, s, f = input().split()
-    rides += [Ride(a, b, x, y, s, f)]
+    a, b, x, y, s, f = [int(n) for n in input().split()]
+    rides += [project.Ride(a, b, x, y, s, f)]
