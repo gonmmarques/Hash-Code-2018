@@ -18,18 +18,31 @@
 
 from .datastructures import Car, Ride
 
+
 def parser():
-	""" void -> tuple( list(Cars), list(Rides)) """
+    """ void -> tuple( list(Cars), list(Rides)) """
 
-	R, C, F, N, B, T = [int(i) for i in input().split()]
+    R, C, F, N, B, T = [int(i) for i in input().split()]
 
-	#print('R =', R, 'C =', C, 'F =', F, 'N =', N, 'B =', B, 'T =', T)
+    #print('R =', R, 'C =', C, 'F =', F, 'N =', N, 'B =', B, 'T =', T)
 
-	cars = [Car(0, 0)]*F
-	rides = []
+    cars = [Car(0, 0)] * F
+    rides = []
 
-	for i in range(N):
-	    a, b, x, y, s, f = [int(n) for n in input().split()]
-	    rides += [Ride(a, b, x, y, s, f)]
+    for i in range(N):
+        a, b, x, y, s, f = [int(n) for n in input().split()]
+        rides += [Ride(i, a, b, x, y, s, f)]
 
-	return (rides, cars)
+    return (rides, cars)
+
+
+def main():
+
+    rides, cars = parser()
+
+    rides = sorted(rides)
+
+    for ride in rides:
+
+        for car in cars:
+

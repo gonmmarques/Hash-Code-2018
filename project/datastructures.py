@@ -1,8 +1,9 @@
 class Ride():
     """docstring for Ride"""
 
-    def __init__(self, a, b, x, y, s, f):
+    def __init__(self, ride_id, a, b, x, y, s, f):
         super(Ride, self).__init__()
+        self.ride_id = ride_id
         self.a = a
         self.b = b
         self.x = x
@@ -39,11 +40,13 @@ class Ride():
     def __ne__(self, other):
         return self.s != other.s
 
+    def __str__(self):
+        return "Ride: (a,b)=" + str(self.a) + ", " + str(self.b) + "; (x,y)=" + str(self.x) + ", " + str(self.y) + "; (s, f)=" + str(self.s) + ", " + str(self.f)
 
 
 class Car():
 
-    def __init__(self, id, xInit, yInit):
+    def __init__(self, xInit, yInit):
         super(Car, self).__init__()
         # self.id = id
         self.x = xInit
