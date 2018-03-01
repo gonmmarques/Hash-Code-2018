@@ -21,6 +21,24 @@ class Ride():
         pd = car.calculatePreDistance(self)
         return pd + self.calculateWaitingTime(pd) + self.calculateDistance()
 
+    def __lt__(self, other):
+        return self.s < other.s
+
+    def __gt__(self, other):
+        return self.s > other.s
+
+    def __eq__(self, other):
+        return self.s == other.s
+
+    def __le__(self, other):
+        return self.s <= other.s
+
+    def __ge__(self, other):
+        return self.s >= other.s
+
+    def __ne__(self, other):
+        return self.s != other.s
+
 
 
 class Car():
