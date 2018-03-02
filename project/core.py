@@ -18,14 +18,14 @@
 
 from .datastructures import Car, Ride
 
+linhas = 0
 
 def parser():
     """ void -> tuple( list(Cars), list(Rides)) """
-
+    global linhas
     R, C, F, N, B, T = [int(i) for i in input().split()]
-
     #print('R =', R, 'C =', C, 'F =', F, 'N =', N, 'B =', B, 'T =', T)
-
+    linhas = R
     cars = [Car(0, 0) for _ in range(F)]
     rides = []
 
@@ -51,12 +51,13 @@ def cost(ride, car):
     # print("preTime", str(preTime))
 
     # proximity to arrival time
-    cost += car.isAvailableStart(ride)
+    availableTime = (car.isAvailableStart(ride) * linhas // 8)
+    cost += availableTime
 
-    # print("isavailablestart", str(car.isAvailableStart(ride)))
+    # print("isavailablestart", str(availableTime))
 
     # proximity to finish time
-    cost += car.arrivesBeforeFinish(ride)
+    cost += car.arrivesBeforeFinish(ride) // (linhas * 2)
     # print("arrivesbeforefinish", str(car.arrivesBeforeFinish(ride)))
 
     # print("total", str(cost))
@@ -68,9 +69,9 @@ def main():
 
     rides, cars = parser()
 
-    rides = sorted(rides)
-
+    # rides = sorted(rides)
     for ride in rides:
+        # print("----------")
 
         max_car = (None, 9999999)
 
